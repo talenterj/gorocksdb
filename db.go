@@ -232,6 +232,11 @@ func (db *DB) UnsafeGetDB() unsafe.Pointer {
 	return unsafe.Pointer(db.c)
 }
 
+// Opts returns the Options* of the database.
+func (db *DB) Opts() *Options {
+	return db.opts
+}
+
 // Name returns the name of the database.
 func (db *DB) Name() string {
 	return db.name
