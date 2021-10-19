@@ -3,7 +3,6 @@ package gorocksdb
 // #include "rocksdb/c.h"
 // #include "gorocksdb.h"
 import "C"
-import "fmt"
 
 // IndexType specifies the index type that will be used for this table.
 type IndexType uint
@@ -178,9 +177,10 @@ func (opts *BlockBasedTableOptions) SetBlockCache(cache *Cache) {
 
 // create a cache with specified capcity, use it instead of internal cache
 func (opts *BlockBasedTableOptions) SetCacheSize(capacity uint64) {
-	opts.cache = NewLRUCache(capacity)
-	C.rocksdb_block_based_options_set_block_cache(opts.c, opts.cache.c)
-	fmt.Println("call Set Cache")
+	//opts.cache = NewLRUCache(capacity)
+	opts.SetBlockCache(NewLRUCache(capacity))
+	//C.rocksdb_block_based_options_set_block_cache(opts.c, opts.cache.c)
+	//fmt.Println("call Set Cache")
 }
 
 // SetBlockCacheCompressed sets the cache for compressed blocks.
