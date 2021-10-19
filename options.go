@@ -5,6 +5,7 @@ package gorocksdb
 import "C"
 import (
 	"errors"
+	"fmt"
 	"unsafe"
 )
 
@@ -344,7 +345,9 @@ func (opts *Options) OptimizeUniversalStyleCompaction(memtable_memory_budget uin
 // the next time the database is opened.
 // Default: 64MB
 func (opts *Options) SetWriteBufferSize(value int) {
+	fmt.Println("call before WB")
 	C.rocksdb_options_set_write_buffer_size(opts.c, C.size_t(value))
+	fmt.Println("call WB end")
 }
 
 // SetMaxWriteBufferNumber sets the maximum number of write buffers
