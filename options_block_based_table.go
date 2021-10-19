@@ -175,6 +175,12 @@ func (opts *BlockBasedTableOptions) SetBlockCache(cache *Cache) {
 	C.rocksdb_block_based_options_set_block_cache(opts.c, cache.c)
 }
 
+// create a cache with specified capcity, use it instead of internal cache
+func (opts *BlockBasedTableOptions) SetCacheSize(capacity uint64) {
+	opts.cache = NewLRUCache(capacity)
+	C.rocksdb_block_based_options_set_block_cache(opts.c, opts.cache.c)
+}
+
 // SetBlockCacheCompressed sets the cache for compressed blocks.
 // If nil, rocksdb will not use a compressed block cache.
 // Default: nil
