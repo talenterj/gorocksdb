@@ -2,6 +2,7 @@ package gorocksdb
 
 // #include "rocksdb/c.h"
 import "C"
+import "fmt"
 
 // Cache is a cache used to store data read from data in memory.
 type Cache struct {
@@ -10,6 +11,7 @@ type Cache struct {
 
 // NewLRUCache creates a new LRU Cache object with the capacity given.
 func NewLRUCache(capacity uint64) *Cache {
+	fmt.Println("creat a new LRU Cache")
 	return NewNativeCache(C.rocksdb_cache_create_lru(C.size_t(capacity)))
 }
 
