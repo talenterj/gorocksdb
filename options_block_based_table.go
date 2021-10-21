@@ -175,7 +175,7 @@ func (opts *BlockBasedTableOptions) SetBlockCache(cache *Cache) {
 	C.rocksdb_block_based_options_set_block_cache(opts.c, cache.c)
 }
 
-// create a cache with specified capcity, use it instead of internal cache
+// create a cache with specified capcity, use it instead of internal  cache
 // this method  not use
 func (opts *BlockBasedTableOptions) SetCacheSize(capacity uint64) {
 	C.rocksdb_block_based_options_set_cache_size(opts.c, C.uint64_t(capacity))
