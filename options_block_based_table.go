@@ -177,7 +177,7 @@ func (opts *BlockBasedTableOptions) SetBlockCache(cache *Cache) {
 
 // set cache size with C.rocksdb_block_based_options_set_cache_size
 func (opts *BlockBasedTableOptions) SetCacheSize(capacity uint64) {
-	if capacity == 8388608 {
+	if capacity != 8388608 {
 		opts.SetBlockCache(NewLRUCache(capacity))
 	}
 }
