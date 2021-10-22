@@ -1155,7 +1155,8 @@ func (opts *Options) SetCreateIfMissingColumnFamilies(value bool) {
 // SetBlockBasedTableFactory sets the block based table factory.
 func (opts *Options) SetBlockBasedTableFactory(value *BlockBasedTableOptions) {
 	opts.bbto = value
-	fmt.Println("use SetBlockBasedTableFactory in gorocksdb \n")
+
+	fmt.Println("use SetBlockBasedTableFactory in gorocksdb")
 	C.rocksdb_options_set_block_based_table_factory(opts.c, value.c)
 }
 
