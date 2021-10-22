@@ -345,9 +345,7 @@ func (opts *Options) OptimizeUniversalStyleCompaction(memtable_memory_budget uin
 // the next time the database is opened.
 // Default: 64MB
 func (opts *Options) SetWriteBufferSize(value int) {
-	fmt.Println("call before WB")
 	C.rocksdb_options_set_write_buffer_size(opts.c, C.size_t(value))
-	fmt.Println("call WB end")
 }
 
 // SetMaxWriteBufferNumber sets the maximum number of write buffers
@@ -1155,7 +1153,6 @@ func (opts *Options) SetCreateIfMissingColumnFamilies(value bool) {
 // SetBlockBasedTableFactory sets the block based table factory.
 func (opts *Options) SetBlockBasedTableFactory(value *BlockBasedTableOptions) {
 	opts.bbto = value
-
 	fmt.Println("use SetBlockBasedTableFactory in gorocksdb")
 	C.rocksdb_options_set_block_based_table_factory(opts.c, value.c)
 }
